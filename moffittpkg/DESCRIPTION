@@ -1,0 +1,21 @@
+Package: moffittpkg
+Type: Package
+Title: Package to hold Shiny modules and functions to use across Moffitt apps
+Version: 0.0.1
+Authors@R: c(
+  person("Andy", "Merlino", email = "andy.merlino@tychobra.com", role = c("aut", "cre")))
+Maintainer: Andy Merlino <andy.merlino@tychobra.com>
+Description: Packages to hold Shiny modules and functions to use across Moffitt apps.
+License: Gatherware
+Encoding: UTF-8
+Imports:
+    httr,
+    shiny,
+    shinyFeedback,
+    shinyjs,
+    shinyWidgets,
+    DT,
+    DBI,
+    polished
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
