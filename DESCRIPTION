@@ -1,4 +1,4 @@
-Package: moffittpkg
+Package: mccpkg
 Type: Package
 Title: Package to hold Shiny modules and functions to use across Moffitt apps
 Version: 0.0.1
