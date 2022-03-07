@@ -1,1 +1,1 @@
-# mcc_pkg
+# mccpkg
