@@ -24,7 +24,7 @@ custom_admin_module_ui <- function() {
     head <- shinydashboard::dashboardHeader(
       title = tagList(
         tags$img(
-          src = 'moffittpkg/images/orion_logo_small.png', 
+          src = 'mcc/images/orion_logo_small.png', 
           width = "45px"
         ), 
         htmltools::tags$head(htmltools::tags$title("Admin Panel"))
@@ -34,7 +34,7 @@ custom_admin_module_ui <- function() {
     head <- shinydashboard::dashboardHeader(
       title = tagList(
         tags$img(
-          src = 'moffittpkg/images/orion_logo_small.png', 
+          src = 'mcc/images/orion_logo_small.png', 
           width = "45px"
         ), 
         htmltools::tags$head(htmltools::tags$title("Admin Panel"))
@@ -96,9 +96,9 @@ custom_admin_module_ui <- function() {
     htmltools::tags$head(
       tags$link(
         rel = "shortcut icon", 
-        href = "moffittpkg/images/orion_logo_small.png"
+        href = "mcc/images/orion_logo_small.png"
       ),
-      htmltools::tags$link(rel = "stylesheet", href = "moffittpkg/css/admin_styles.css?version=1")
+      htmltools::tags$link(rel = "stylesheet", href = "mcc/css/admin_styles.css?version=1")
     ),
     shinyjs::useShinyjs(),
     shinyFeedback::useShinyFeedback(),
