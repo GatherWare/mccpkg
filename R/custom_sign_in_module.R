@@ -16,7 +16,7 @@ custom_sign_in_page <- function() {
     company_name = "GatherWare, Inc.",
     logo_top = htmltools::tagList(
       tags$img(
-        src = "mcc/images/moffitt-logo.svg",
+        src = "mccpkg/images/moffitt-logo.svg",
         alt = "Moffitt Cancer Center Logo",
         style = "margin-top: 50px; margin-bottom: 25px; width: 400px;"
       )
@@ -38,11 +38,11 @@ custom_sign_in_page <- function() {
         ')
     )
     , logo_bottom = tags$img(
-      src = "mcc/images/orion_logo_small.png",
+      src = "mccpkg/images/orion_logo_small.png",
       alt = "Orion Logo",
       style = "width: 150px; margin-top: 30px; margin-bottom: 30px;"
     )
-    , icon_href = "mcc/images/orion_logo_small.png"
+    , icon_href = "mccpkg/images/orion_logo_small.png"
   )
 }
 
