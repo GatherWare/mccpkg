@@ -5,7 +5,7 @@
 #' @noRd
 #'
 .onLoad <- function(...) {
-  shiny::addResourcePath("mccpkg", system.file("assets", package = "mccpkg"))
+  shiny::addResourcePath("mcc", system.file("assets", package = "mccpkg"))
 
   invisible(NULL)
 }
