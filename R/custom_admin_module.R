@@ -24,7 +24,7 @@ custom_admin_module_ui <- function() {
     head <- shinydashboard::dashboardHeader(
       title = tagList(
         tags$img(
-          src = 'mcc/images/orion_logo_small.png', 
+          src = 'mccpkg/images/orion_logo_small.png', 
           width = "45px"
         ), 
         htmltools::tags$head(htmltools::tags$title("Admin Panel"))
@@ -34,7 +34,7 @@ custom_admin_module_ui <- function() {
     head <- shinydashboard::dashboardHeader(
       title = tagList(
         tags$img(
-          src = 'mcc/images/orion_logo_small.png', 
+          src = 'mccpkg/images/orion_logo_small.png', 
           width = "45px"
         ), 
         htmltools::tags$head(htmltools::tags$title("Admin Panel"))
@@ -96,9 +96,9 @@ custom_admin_module_ui <- function() {
     htmltools::tags$head(
       tags$link(
         rel = "shortcut icon", 
-        href = "mcc/images/orion_logo_small.png"
+        href = "mccpkg/images/orion_logo_small.png"
       ),
-      htmltools::tags$link(rel = "stylesheet", href = "mcc/css/admin_styles.css?version=1")
+      htmltools::tags$link(rel = "stylesheet", href = "mccpkg/css/admin_styles.css?version=1")
     ),
     shinyjs::useShinyjs(),
     shinyFeedback::useShinyFeedback(),
@@ -217,7 +217,7 @@ user_access_module_ui <- function(id) {
     # users table
     tags$script(src = "polish/js/user_access_module.js?version=2"),
     tags$script(paste0("user_access_module('", ns(''), "')")),
-    tags$script(src = "custom_admin_module.js?version=2"),
+    tags$script(src = "mcc/js/custom_admin_module.js?version=2"),
     tags$script(paste0("custom_admin_module('", ns(''), "')"))
   )
 }
