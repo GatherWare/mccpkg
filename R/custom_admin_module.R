@@ -217,7 +217,7 @@ user_access_module_ui <- function(id) {
     # users table
     tags$script(src = "polish/js/user_access_module.js?version=2"),
     tags$script(paste0("user_access_module('", ns(''), "')")),
-    tags$script(src = "mcc/js/custom_admin_module.js?version=2"),
+    tags$script(src = "mccpkg/js/custom_admin_module.js?version=2"),
     tags$script(paste0("custom_admin_module('", ns(''), "')"))
   )
 }
