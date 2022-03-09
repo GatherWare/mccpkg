@@ -52,7 +52,7 @@ custom_admin_module_ui <- function() {
           )
           , tags$li( 
             tags$a(
-              href = "https://gatherware.shinyapps.io/MCC-Data-Management-DEV/"
+              href = "?"
               , target = "blank_"
               , icon("database")
               , "Data Management"
