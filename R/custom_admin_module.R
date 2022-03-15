@@ -20,17 +20,30 @@ custom_admin_module_ui <- function() {
   if (identical(.polished$app_name, "MCC-Dynamic-Master-Plan")) {
     dm_li <- tags$li( 
       tags$a(
-        href = "?"
+        href = "https://gatherware.shinyapps.io/MCC-Data-Management"
         , target = "blank_"
         , icon("database")
         , "Data Management"
       ),
     )
-    name_out <- "Master Plan"
+    name_out <- tagList(
+      icon("rocket"),  
+      "Master Plan"
+    )
     
   } else {
-    dm_li <- NULL
-    name_out <- "Data Management"
+    dm_li <-dm_li <- tags$li( 
+      tags$a(
+        href = "https://gatherware.shinyapps.io/MCC-Dynamic-Master-Plan"
+        , target = "blank_"
+        , icon("rocket")
+        , "Master Plan"
+      ),
+    )
+    name_out <- name_out <- tagList(
+      icon("database"),
+      "Data Management"
+    )
   }
   
   
@@ -61,7 +74,6 @@ custom_admin_module_ui <- function() {
             tags$a(
               id = "shiny_app_link"
               , href = app_config$base_url
-              , icon("rocket")
               , name_out
             )
           ),
