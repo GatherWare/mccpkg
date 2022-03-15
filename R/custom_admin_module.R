@@ -17,6 +17,21 @@
 #'
 custom_admin_module_ui <- function() {
   
+  if (identical(.polished$app_name, "MCC-Dynamic-Master-Plan")) {
+    dm_li <- tags$li( 
+      tags$a(
+        href = "?"
+        , target = "blank_"
+        , icon("database")
+        , "Data Management"
+      ),
+    )
+    name_out <- "Master Plan"
+    
+  } else {
+    dm_li <- NULL
+    name_out <- "Data Management"
+  }
   
   
   # don't show profile dropdown if in Admin mode.  User cannot log out of admin mode.
@@ -47,17 +62,10 @@ custom_admin_module_ui <- function() {
               id = "shiny_app_link"
               , href = app_config$base_url
               , icon("rocket")
-              , "Shiny App"
+              , name_out
             )
-          )
-          , tags$li( 
-            tags$a(
-              href = "?"
-              , target = "blank_"
-              , icon("database")
-              , "Data Management"
-            ),
-          )
+          ),
+          dm_li
           , tags$li(
             actionLink("user_feedback", label = "Leave Feedback", icon = icon("comments"))
           )
