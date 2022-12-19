@@ -47,44 +47,33 @@ custom_admin_module_ui <- function() {
   }
   
   
-  # don't show profile dropdown if in Admin mode.  User cannot log out of admin mode.
-  if (isTRUE(.polished$admin_mode)) {
-    head <- shinydashboard::dashboardHeader(
-      title = tagList(
-        tags$img(
-          src = 'mccpkg/images/orion_logo_small.png', 
-          width = "45px"
-        ), 
-        htmltools::tags$head(htmltools::tags$title("Admin Panel"))
-      )
-    )
-  } else {
-    head <- shinydashboard::dashboardHeader(
-      title = tagList(
-        tags$img(
-          src = 'mccpkg/images/orion_logo_small.png', 
-          width = "45px"
-        ), 
-        htmltools::tags$head(htmltools::tags$title("Admin Panel"))
-      ),
-      polished::profile_module_ui(
-        "profile"
-        , other_lis = tagList(
-          tags$li(
-            tags$a(
-              id = "shiny_app_link"
-              , href = app_config$base_url
-              , name_out
-            )
-          ),
-          dm_li
-          , tags$li(
-            actionLink("user_feedback", label = "Leave Feedback", icon = icon("comments"))
+  
+  
+  head <- shinydashboard::dashboardHeader(
+    title = tagList(
+      tags$img(
+        src = 'mccpkg/images/orion_logo_small.png', 
+        width = "45px"
+      ), 
+      htmltools::tags$head(htmltools::tags$title("Admin Panel"))
+    ),
+    polished::profile_module_ui(
+      "profile", 
+      other_lis = tagList(
+        tags$li(
+          tags$a(
+            id = "shiny_app_link", 
+            href = app_config$base_url, 
+            name_out
           )
+        ),
+        dm_li, 
+        tags$li(
+          actionLink("user_feedback", label = "Leave Feedback", icon = icon("comments"))
         )
       )
     )
-  }
+  )
   
   
   
@@ -336,14 +325,7 @@ user_access_module <- function(input, output, session) {
         
         the_row <- out[row_num, ]
         
-        if (.polished$admin_mode) {
-          buttons_out <- paste0('<div class="btn-group" style="width: 135px" role="group" aria-label="User Action Buttons">
-            <button class="btn btn-default btn-sm sign_in_as_btn" data-toggle="tooltip" data-placement="top" title="Sign In As" id = ', the_row$user_uid, ' style="margin: 0" disabled><i class="fas fa-user-astronaut"></i></button>
-            <button class="btn btn-primary btn-sm edit_btn" data-toggle="tooltip" data-placement="top" title="Edit User" id = ', the_row$user_uid, ' style="margin: 0"><i class="fa fa-pencil-square-o"></i></button>
-            <button class="btn btn-danger btn-sm delete_btn" id = ', the_row$user_uid, ' style="margin: 0" disabled><i class="fa fa-trash-o"></i></button>
-            <button class="btn btn-warning btn-sm reset_pw_btn" data-toggle="tooltip" data-placement="top" title="Reset Password" id = ', the_row$user_uid, ' style="margin: 0"><i class="fas fa-lock"></i></button>
-          </div>')
-        } else if (isTRUE(the_row$is_admin)) {
+        if (isTRUE(the_row$is_admin)) {
           buttons_out <- paste0('<div class="btn-group" style="width: 135px" role="group" aria-label="User Action Buttons">
             <button class="btn btn-default btn-sm sign_in_as_btn" data-toggle="tooltip" data-placement="top" title="Sign In As" id = ', the_row$user_uid, ' style="margin: 0"><i class="fas fa-user-astronaut"></i></button>
             <button class="btn btn-primary btn-sm edit_btn" data-toggle="tooltip" data-placement="top" title="Edit User" id = ', the_row$user_uid, ' style="margin: 0"><i class="fa fa-pencil-square-o"></i></button>
@@ -553,7 +535,7 @@ user_access_module <- function(input, output, session) {
   
   
   shiny::observeEvent(input$sign_in_as_btn_user_uid, {
-    req(isFALSE(.polished$admin_mode))
+    
     hold_user <- session$userData$user()
     
     user_to_sign_in_as <- users() %>%
