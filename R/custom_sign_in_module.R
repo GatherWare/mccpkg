@@ -325,7 +325,12 @@ custom_sign_in_module <- function(input, output, session) {
 
         # check if user is not registered.  If user is not registered, send them to
         # the registration page and auto populate the registration email input
-        if (polished:::is_email_registered(email)) {
+        is_reg_list <- is_email_registered(email)
+        if (!is.null(is_reg_list$error)) {
+          stop(is_reg_list$error, call. = FALSE)
+        }
+        
+        if (isTRUE(is_reg_list$is_registered)) {
           # user is invited, so continue the sign in process
           shinyjs::hide("submit_continue_sign_in")
 
@@ -427,21 +432,23 @@ custom_sign_in_module <- function(input, output, session) {
           text = "You must have an invite to access this app",
           type = "error"
         )
-        return()
+        
+      } else {
+        # user is invited
+        shinyjs::hide("continue_registration")
+        
+        shinyjs::show(
+          "register_passwords",
+          anim = TRUE
+        )
+        
+        # NEED to sleep this exact amount to allow animation (above) to show w/o bug
+        Sys.sleep(.25)
+        
+        shinyjs::runjs(paste0("$('#", ns('register_password'), "').focus()"))  
       }
       
-      # user is invited
-      shinyjs::hide("continue_registration")
       
-      shinyjs::show(
-        "register_passwords",
-        anim = TRUE
-      )
-      
-      # NEED to sleep this exact amount to allow animation (above) to show w/o bug
-      Sys.sleep(.25)
-      
-      shinyjs::runjs(paste0("$('#", ns('register_password'), "').focus()"))
       
     }, error = function(e) {
       # user is not invited
