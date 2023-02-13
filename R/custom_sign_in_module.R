@@ -325,7 +325,7 @@ custom_sign_in_module <- function(input, output, session) {
 
         # check if user is not registered.  If user is not registered, send them to
         # the registration page and auto populate the registration email input
-        is_reg_list <- is_email_registered(email)
+        is_reg_list <- polished:::is_email_registered(email)
         if (!is.null(is_reg_list$error)) {
           stop(is_reg_list$error, call. = FALSE)
         }
